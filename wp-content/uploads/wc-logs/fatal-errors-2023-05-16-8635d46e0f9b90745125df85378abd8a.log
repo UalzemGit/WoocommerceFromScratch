@@ -1,0 +1,4 @@
+2023-05-16T17:09:49+00:00 CRITICAL syntax error, unexpected identifier "add_filter", em C:\xampp\htdocs\woomarcelo2023\wp-content\themes\easy-fly\functions.php, na linha 152
+
+2023-05-16T20:34:01+00:00 CRITICAL syntax error, unexpected token "endif", em C:\xampp\htdocs\woomarcelo2023\wp-content\themes\easy-fly\searchform.php, na linha 33
+

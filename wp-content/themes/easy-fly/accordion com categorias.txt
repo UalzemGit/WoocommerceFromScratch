@@ -1,0 +1,70 @@
+<?php
+// Step 1: Get all categories
+$categories = get_categories();
+
+// Step 2: Loop through each category and get related posts
+foreach ($categories as $category) {
+  $cat_id = $category->cat_ID;
+  $cat_name = $category->cat_name;
+  
+  // Step 3: Query posts based on category ID
+  $query = new WP_Query(array(
+    'cat' => $cat_id,
+    'posts_per_page' => -1 // Show all posts
+  ));
+  
+  // Step 4: Store post titles in an array
+  $post_titles = array();
+  if ($query->have_posts()) {
+    while ($query->have_posts()) {
+      $query->the_post();
+      array_push($post_titles, get_the_title());
+    }
+  }
+  
+  // Step 5: Use the post titles array to create the Bootstrap Tab markup
+  echo '<div class="tab-pane" id="' . $cat_name . '">';
+  echo '<ul>';
+  foreach ($post_titles as $title) {
+    echo '<li>' . $title . '</li>';
+  }
+  echo '</ul>';
+  echo '</div>';
+} 
+
+// Step 6: Reset the WP_Query loop
+wp_reset_postdata();
+
+// Step 7: Add the Bootstrap Tab markup to your template file, using the appropriate CSS classes and IDs
+?>
+<!-- Bootstrap Tab Markup Example -->
+<div class="container">
+  <ul class="nav nav-tabs">
+    <?php foreach ($categories as $category) { ?>
+      <li><a href="#<?php echo $category->cat_name; ?>" data-toggle="tab"><?php echo $category->cat_name; ?></a></li>
+    <?php } ?>
+  </ul>
+  
+  <div class="tab-content">
+    <?php foreach ($categories as $category) { ?>
+      <div class="tab-pane" id="<?php echo $category->cat_name; ?>">
+        <ul>
+          <?php 
+            $cat_id = $category->cat_ID;
+            $query = new WP_Query(array(
+              'cat' => $cat_id,
+              'posts_per_page' => -1
+            ));
+            if ($query->have_posts()) {
+              while ($query->have_posts()) {
+                $query->the_post();
+                echo '<li>' . get_the_title() . '</li>';
+              }
+            }
+            wp_reset_postdata();
+          ?>
+        </ul>
+      </div>
+    <?php } ?>
+  </div>
+</div>
