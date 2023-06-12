@@ -160,17 +160,45 @@ get_header(); ?>
                 <div class="row">
 
                     <?php
-                    if (have_posts()) :
-                        while (have_posts()) : the_post();
+
+                    $args = array(
+                        'post_type' => 'post',
+                        'posts_per_page' => 2,
+                    );
+
+                    $blog_posts = new WP_Query($args);
+
+                    if ($blog_posts->have_posts()) :
+                        while ($blog_posts->have_posts()) : $blog_posts->the_post();
                     ?>
 
-                            <article>
-                                <h2><?php the_title(); ?></h2>
-                                <div><?php the_content(); ?></div>
+                            <article class="col-md-6 col-12 postsblog-home">
+
+                                <a href="<?php the_permalink() ?>">
+                                    <?php
+                                    if (has_post_thumbnail()) :
+                                        the_post_thumbnail();
+                                    endif;
+                                    ?>
+                                </a>
+
+
+                                <h3>
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h3>
+                                <div class="excerpt">
+                                    <a href="<?php the_permalink() ?>">
+                                        <?php the_excerpt(); ?>
+                                    </a>
+                                </div>
+
                             </article>
 
                         <?php
                         endwhile;
+                        wp_reset_postdata();
                     else : ?>
                         <p>Nothing to display !</p>
                     <?php endif;

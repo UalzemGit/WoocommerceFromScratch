@@ -59,6 +59,26 @@ function easy_fly_customizer($wp_customize)
             'type' => 'number'
         )
     );
+
+    // BLOG TITLE:
+    $wp_customize->add_setting(
+        'set_blog_title',
+        array(
+            'type' => 'theme_mod',
+            'default' => '',
+            'sanitize_callback' => 'sanitize_text_field'
+        )
+    );
+
+    $wp_customize->add_control(
+        'set_blog_title',
+        array(
+            'label' => 'Blog Section Title',
+            'description' => 'Blog Section Title',
+            'section' => 'sec_home_page',
+            'type' => 'text'
+        )
+    );
 }
 
 add_action('customize_register', 'easy_fly_customizer');

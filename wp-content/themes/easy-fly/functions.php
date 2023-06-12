@@ -79,6 +79,8 @@ add_theme_support('custom-logo', array(
 
 ));
 
+add_theme_support('post-thumbnails');
+
 //************************* */ FIM CONFIGURAÇÕES DO TEMA*****************/
 
 

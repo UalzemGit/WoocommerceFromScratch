@@ -941,3 +941,14 @@ ul li a,
     width: 100%;
   }
 }
+
+/*************  MY BLOG IMAGE POST:  **********************/
+.postsblog-home {
+  margin-top: 40px;
+}
+.postsblog-home img {
+  width: 100% !important;
+  height: 320px !important;
+  object-fit: cover !important;
+  max-width: 100% !important;
+}
