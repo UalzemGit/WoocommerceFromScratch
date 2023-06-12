@@ -73,13 +73,17 @@ get_header(); ?>
 
             <section class="popular-products">
                 <div class="container">
-                    <h2>Popular Products</h2>
+                    <div class="section-title">
+                        <h2>Popular Products</h2>
+                    </div>
                     <?php echo do_shortcode('[products limit="4" columns="4" orderby="popularity"]') ?>
                 </div>
             </section>
             <section class="new-arrivals">
                 <div class="container">
-                    <h2>New Arrivals</h2>
+                    <div class="section-title">
+                        <h2>New Arrivals</h2>
+                    </div>
                     <?php echo do_shortcode('[products limit="4" columns="4" orderby="date"]') ?>
                 </div>
             </section>
@@ -100,7 +104,9 @@ get_header(); ?>
                 ?>
                 <section class="deal-of-the-week">
                     <div class="container">
-                        <h2>Deal of the Week</h2>
+                        <div class="section-title">
+                            <h2>Deal of the Week</h2>
+                        </div>
                         <div class="row d-flex align-items-center">
                             <div class="deal-img col-md-6 ml-auto col-12 text-center">
                                 <?php echo get_the_post_thumbnail($deal, 'large', array(
@@ -148,6 +154,9 @@ get_header(); ?>
 
         <section class="lab-blog">
             <div class="container">
+                <div class="section-title">
+                    <h2><?php echo get_theme_mod('set_blog_title', 'News From Our Blog') ?></h2>
+                </div>
                 <div class="row">
 
                     <?php
