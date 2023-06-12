@@ -983,4 +983,23 @@ ul li a,
   object-fit: cover !important;
   max-width: 100% !important;
 }
+
+.post-thumb img {
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: cover !important;
+  max-width: 100% !important;
+}
 /*********************************************************************/
+.excerpt-blog {
+  margin-bottom: 60px;
+}
+.excerpt-blog a {
+  color: #000;
+}
+.meta {
+  margin-bottom: 30px;
+}
+.meta p {
+  margin-bottom: 0rem;
+}

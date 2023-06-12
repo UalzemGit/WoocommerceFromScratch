@@ -24,9 +24,44 @@ get_header(); ?>
         if (have_posts()) :
           while (have_posts()) : the_post();
         ?>
-            <article>
-              <h2><?php the_title(); ?></h2>
-              <div><?php the_content(); ?></div>
+            <article class="col-lg-6 col-12" <?php post_class(); ?>>
+
+              <h2>
+                <a href="<?php the_permalink() ?>">
+                  <?php the_title(); ?>
+                </a>
+              </h2>
+
+              <div class="post-thumb">
+                <a href="<?php the_permalink() ?>">
+                  <?php
+                  if (has_post_thumbnail()) :
+                    the_post_thumbnail();
+                  endif;
+                  ?>
+                </a>
+              </div>
+
+              <div class="meta">
+                <p>Published by <?php the_author_posts_link(); ?> on <?php echo get_the_date(); ?></p>
+
+                <?php if (has_category()) : ?>
+                  <p>Categories: <span><?php the_category(' / '); ?></span></p>
+                <?php endif; ?>
+
+                <?php if (has_tag()) : ?>
+                  <p>Tags: <span><?php the_tags('', ', '); ?></span></p>
+                <?php endif; ?>
+
+              </div>
+
+
+
+              <div class="excerpt-blog">
+                <a href="<?php the_permalink() ?>">
+                  <?php the_excerpt(); ?>
+                </a>
+              </div>
             </article>
           <?php
           endwhile;
